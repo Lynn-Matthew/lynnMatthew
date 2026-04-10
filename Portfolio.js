@@ -1,8 +1,13 @@
 /* ── Viewport scaling ── */
-(function () {
-  function applyScale() {
+function applyScale() {
     const scale = window.innerWidth / 1920;
     document.documentElement.style.setProperty('--site-scale', scale);
+    const nav = document.querySelector('.nav');
+    if (nav) {
+      // Natural nav height × scale = its true visual height on screen
+      const navVisualHeight = nav.offsetHeight * scale;
+      document.documentElement.style.setProperty('--nav-visual-height', navVisualHeight + 'px');
+    }
     // Let #site-wrapper grow to its natural content height.
     // Only compensate body so the scaled wrapper's visual height fills the viewport.
     const wrapper = document.getElementById('site-wrapper');
