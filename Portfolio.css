@@ -3096,12 +3096,7 @@ html {
   transform-origin: top left;
   transform: scale(var(--site-scale, 1));
   height: auto;
-}
-#nav-wrapper {
-  width: 1920px;
-  transform-origin: top left;
-  transform: scale(var(--site-scale, 1));
-  height: auto;
+  margin-top: var(--nav-visual-height, 72px);
 }
 /* Scale modal content to match site scale */
 .image-modal .modal-content,
