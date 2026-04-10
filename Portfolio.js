@@ -3,8 +3,17 @@
   function applyScale() {
     const scale = window.innerWidth / 1920;
     document.documentElement.style.setProperty('--site-scale', scale);
-    document.body.style.height = (window.innerHeight / scale) + 'px';
-    document.getElementById('site-wrapper').style.height = (window.innerHeight / scale) + 'px';
+    // Let #site-wrapper grow to its natural content height.
+    // Only compensate body so the scaled wrapper's visual height fills the viewport.
+    const wrapper = document.getElementById('site-wrapper');
+    if (wrapper) {
+      wrapper.style.height = '';  // clear any previously set height
+      // After layout, sync body height to the wrapper's scaled visual height
+      requestAnimationFrame(function () {
+        const naturalHeight = wrapper.scrollHeight;
+        document.body.style.height = (naturalHeight * scale) + 'px';
+      });
+    }
   }
   applyScale();
   window.addEventListener('resize', applyScale);
