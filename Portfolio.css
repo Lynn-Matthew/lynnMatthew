@@ -3099,3 +3099,13 @@ html {
   transform: scale(var(--site-scale, 1));
   min-height: 100vh;
 }
+/* Scale modal content to match site scale */
+.image-modal .modal-content,
+.image-modal .close-modal,
+.image-modal .prev-btn,
+.image-modal .next-btn,
+.image-modal .image-counter,
+.details-modal .details-modal-content {
+  transform: scale(var(--site-scale, 1));
+  transform-origin: center center;
+}
