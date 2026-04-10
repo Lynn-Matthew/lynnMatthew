@@ -120,7 +120,8 @@ body {
   color: var(--text-primary);
   line-height: 1.5;
   transition: background-color 0.5s ease, color 0.5s ease;
-  min-width: 320px; /* Always render desktop layout — no mobile reflow */
+  min-width: 280px;
+  /* Always render desktop layout — no mobile reflow */
 }
 
 .container {
@@ -137,16 +138,50 @@ body {
    NAVIGATION
 ════════════════════════════════════════ */
 
-.navbar {
-  width: 600px;
-  max-width: 90%;
-}
-
 .navbar svg {
-  width: 50%;
   height: auto;
   display: block;
   margin: 0 auto;
+}
+
+/* Desktop */
+@media (min-width: 901px) {
+  .navbar {
+    width: 600px;
+    max-width: 90%;
+  }
+
+  .navbar svg {
+    width: 50%;
+    /* Approx 300px */
+  }
+}
+
+/* Tablet */
+@media (max-width: 900px) and (min-width: 481px) {
+  .navbar {
+    width: 400px;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .navbar svg {
+    width: 60%;
+    /* Approx 240px */
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .navbar {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .navbar svg {
+    width: 200px;
+    /* appropriately scales navbar on mobile to avoid slicing hero section */
+  }
 }
 
 .nav-item {
@@ -303,7 +338,8 @@ body {
 
 .about-section {
   background: var(--cream, #fff7d9);
-  overflow: visible;            /* keep visible to allow overlap, but we will contain it */
+  overflow: visible;
+  /* keep visible to allow overlap, but we will contain it */
   position: relative;
   /* Add a clearfix to ensure the section wraps around all floated/overlapped content */
 }
@@ -504,17 +540,20 @@ body {
   font-weight: 500;
   letter-spacing: 0.02em;
 }
+
 /* ── STATS HOVER ANIMATION (SVG groups) ── */
-#ZOHO{
+#ZOHO {
   transition: transform 0.25s ease, filter 0.25s ease;
   cursor: pointer;
   transform-origin: 887px 2006.5px;
 }
-#Work{
+
+#Work {
   transition: transform 0.25s ease, filter 0.25s ease;
   cursor: pointer;
   transform-origin: 1106.5px 2006.5px;
 }
+
 #Tools {
   transition: transform 0.25s ease, filter 0.25s ease;
   cursor: pointer;
@@ -535,6 +574,7 @@ body {
   stroke: #333;
   stroke-width: 3;
 }
+
 /* Steam animation */
 @keyframes steamAnim-2 {
   0% {
@@ -1030,6 +1070,7 @@ body {
   overflow: hidden;
   transition: background-color 0.5s ease;
 }
+
 .services-title-wrapper {
   display: inline-flex;
   align-items: center;
@@ -1037,6 +1078,7 @@ body {
   gap: 0.75rem;
   margin-bottom: 1rem;
 }
+
 /* Outer gradient border wrapper */
 .services-wrapper {
   background: linear-gradient(135deg, var(--medium-blue), var(--dark-blue));
@@ -2197,7 +2239,8 @@ body {
   src: url('fonts/BerlinSansFBDemi.woff') format('woff');
   font-weight: normal;
   font-style: normal;
-  font-display: swap; /* Prevents FOIT (Flash of Invisible Text) */
+  font-display: swap;
+  /* Prevents FOIT (Flash of Invisible Text) */
 }
 
 /* Minimal hover - just card lift, no internal animations */
@@ -2778,40 +2821,6 @@ svg {
 }
 
 /* ==============================================
-   RESPONSIVE ADJUSTMENTS
-   Scale down on smaller screens
-   ============================================== */
-
-@media (max-width: 1200px) {
-  .services-section {
-    transform: scale(0.95);
-  }
-}
-
-@media (max-width: 992px) {
-  .services-section {
-    transform: scale(0.9);
-  }
-
-  .services-svg-container {
-    padding: 0 0.5rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .services-section {
-    transform: scale(0.85);
-    padding: 1rem 0;
-  }
-}
-
-@media (max-width: 576px) {
-  .services-section {
-    transform: scale(0.8);
-  }
-}
-
-/* ==============================================
 CONTACT SECTION STYLES
 ============================================== */
 
@@ -2981,6 +2990,7 @@ CONTACT SECTION STYLES
   transition: height 0.3s ease-in-out;
   pointer-events: none;
 }
+
 @keyframes spin-4 {
   from {
     transform: rotate(0deg);
@@ -2995,6 +3005,7 @@ CONTACT SECTION STYLES
   transform-origin: 3038.11px 5220.16px;
   animation: spin-4 4s linear infinite;
 }
+
 /* Steam animation for Cup-3 */
 @keyframes steamAnimCup3 {
   0% {
@@ -3002,15 +3013,19 @@ CONTACT SECTION STYLES
     opacity: 0;
     transform: translateY(0px);
   }
+
   15% {
     opacity: 1;
   }
+
   60% {
     stroke-dashoffset: 0;
   }
+
   85% {
     opacity: 0.7;
   }
+
   100% {
     stroke-dashoffset: 0;
     opacity: 0;
@@ -3066,4 +3081,21 @@ CONTACT SECTION STYLES
   font-size: 14px;
   color: #e7e7e7;
   margin: 0;
+}
+
+/* ════════════════════════════════════════
+   VIEWPORT SCALE — Fixed desktop layout
+   that scales uniformly on all screens.
+   Design baseline = 1920px wide.
+════════════════════════════════════════ */
+
+html {
+  overflow-x: hidden;
+}
+
+#site-wrapper {
+  width: 1920px;
+  transform-origin: top left;
+  transform: scale(var(--site-scale, 1));
+  min-height: 100vh;
 }

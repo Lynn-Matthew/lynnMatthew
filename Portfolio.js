@@ -1,3 +1,14 @@
+/* ── Viewport scaling ── */
+(function () {
+  function applyScale() {
+    const scale = window.innerWidth / 1920;
+    document.documentElement.style.setProperty('--site-scale', scale);
+    document.body.style.height = (window.innerHeight / scale) + 'px';
+    document.getElementById('site-wrapper').style.height = (window.innerHeight / scale) + 'px';
+  }
+  applyScale();
+  window.addEventListener('resize', applyScale);
+})();
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ─── LUCIDE ─── */
@@ -180,9 +191,9 @@ items.forEach(item => {
 
   // ==================== PROJECTS DATA (FIXED SYNTAX) ====================
   const projectsData = [
-    { id: 1, title: "Portfolio", description: "Complete Portfolio site which you are on now.", fullDescription: "This project is so special for me that I spent nearly a month designing and developing this. It's a complete design-focused portfolio build with unique elements.", category: "Development", client: "Web Development", year: "2026", technologies:["HTML","CSS","JS"], imageUrl:"https://digifloat.io/wp-content/uploads/2024/12/Royalty-Free-Illustrations-Twitter.jpg", link: "https://lynn-matthew.github.io/lynnMatthew/", galleryImages: ["Resources/Development/Portfolio/Portfolio.png"] },
-    { id: 2, title: "Cheat Sheet - Adobe Illustrator", description: "Custom cheat sheet designed specifically for Adobe Illustrator.", category: "Print Design", client: "Poster", year: "2026", technologies: ["Adobe Illustrator"], imageUrl: "https://img.freepik.com/free-vector/tiny-graphic-designer-drawing-with-big-pen-computer-screen-creators-work-creative-woman-working-laptop-flat-vector-illustration-digital-design-concept-banner-landing-web-page_74855-25342.jpg?semt=ais_hybrid&w=740&q=80", link:"", galleryImages: ["Resources/Print-Design/Cheat-Sheet/Cheat-Sheet.jpg"] },
-    { id: 3, title: "Queue Management System", description: "An Intelligent Queue Management System for hospitals to maintain their patients and to treat them efficiently and also to improve patient satisfaction and fullfillness.", category: "Development", client: "Web Development", year: "2026", technologies:["HTML","CSS","JS","SQLite"], imageUrl: "https://img.freepik.com/premium-vector/illustration-showing-hospital-building-with-several-ambulances-parked-front-it_697880-24512.jpg?semt=ais_incoming&w=740&q=80", link: "#", galleryImages: ["Resources/Development/QMS/Screenshot (1).png", "Resources/Development/QMS/Screenshot (2).png", "Resources/Development/QMS/Screenshot (3).png","Resources/Development/QMS/Screenshot (4).png","Resources/Development/QMS/Screenshot (5).png","Resources/Development/QMS/Screenshot (6).png","Resources/Development/QMS/Screenshot (7).png","Resources/Development/QMS/Screenshot (8).png","Resources/Development/QMS/Screenshot (9).png","Resources/Development/QMS/Screenshot (10).png","Resources/Development/QMS/Screenshot (11).png","Resources/Development/QMS/Screenshot (12).png","Resources/Development/QMS/Screenshot (13).png","Resources/Development/QMS/Screenshot (14).png","Resources/Development/QMS/Screenshot (15).png"] },
+    { id: 1, title: "Portfolio", description: "Complete Portfolio site which you are on now.", fullDescription: "This project involved a complete overhaul of an existing e-commerce platform. I conducted user research, created wireframes, designed high-fidelity mockups, and built a responsive frontend using React. The result was a 40% increase in conversion rate and a 25% decrease in bounce rate.", category: "Development", client: "Fashion Boutique", year: "2026", imageUrl:"https://digifloat.io/wp-content/uploads/2024/12/Royalty-Free-Illustrations-Twitter.jpg", link: "https://lynn-matthew.github.io/", galleryImages: ["Resources/Development/Portfolio/Portfolio.png"] },
+    { id: 2, title: "Cheat Sheet - Adobe Illustrator", description: "Custom cheat sheet designed specifically for Adobe Illustrator.", category: "Print Design", client: "Poster", year: "2026", technologies: ["Adobe Illustrator"], imageUrl: "https://img.freepik.com/free-vector/tiny-graphic-designer-drawing-with-big-pen-computer-screen-creators-work-creative-woman-working-laptop-flat-vector-illustration-digital-design-concept-banner-landing-web-page_74855-25342.jpg?semt=ais_hybrid&w=740&q=80", link:"", galleryImages: ["Resources/Print-Design/Cheat-Sheet/Cheat-sheet.jpg"] },
+    { id: 3, title: "Queue Management System", description: "Responsive web design and development for an AI-powered productivity platform with dynamic interactions.", category: "Development", client: "FlowAI", year: "2026", imageUrl: "https://img.freepik.com/premium-vector/illustration-showing-hospital-building-with-several-ambulances-parked-front-it_697880-24512.jpg?semt=ais_incoming&w=740&q=80", link: "#", galleryImages: ["hosp/Screenshot (1).png", "hosp/Screenshot (2).png", "hosp/Screenshot (3).png","hosp/Screenshot (4).png","hosp/Screenshot (5).png","hosp/Screenshot (6).png","hosp/Screenshot (7).png","hosp/Screenshot (8).png","hosp/Screenshot (9).png","hosp/Screenshot (10).png","hosp/Screenshot (11).png","hosp/Screenshot (12).png","hosp/Screenshot (13).png","hosp/Screenshot (14).png","hosp/Screenshot (15).png"] },
   ];
 
   let currentCategory = "Top";
