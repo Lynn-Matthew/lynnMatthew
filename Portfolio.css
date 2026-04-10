@@ -207,16 +207,15 @@ body {
   position: fixed;
   top: 0;
   left: 0;
+  right: 0;
+
   z-index: 1000;
-  width: 1920px;
 
   background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 
-  transform: scale(var(--site-scale, 1));
-  transform-origin: top left;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .nav-container {
@@ -242,14 +241,16 @@ body {
 ════════════════════════════════════════ */
 .hero-section {
   width: 100%;
-  padding-top: 0;
+  padding-top: calc(2rem * var(--site-scale, 1));
+  /* push below fixed nav — scales proportionally with viewport */
   background: #fff7d9;
   line-height: 0;
+  /* kill inline-block gap */
 }
 
 /* Default margin (non‑fullscreen) */
 .hero-section .hero-svg-full {
-  margin-top: -180px;
+  margin-top: calc(-180px * var(--site-scale, 1));
   transition: margin-top 0.8s ease;
   /* optional smooth change */
 }
@@ -423,7 +424,7 @@ body {
 }
 
 .about-svg {
-  width: 2020px;
+  width: 100%;
   height: auto;
   object-fit: contain;
 }
@@ -2722,8 +2723,9 @@ body {
 /* The SVG itself - fluid scaling */
 .services-svg {
   display: block;
-  width: 1800px;
+  width: 100%;
   height: auto;
+  max-width: 100%;
   shape-rendering: geometricPrecision;
 }
 
@@ -3095,16 +3097,5 @@ html {
   width: 1920px;
   transform-origin: top left;
   transform: scale(var(--site-scale, 1));
-  height: auto;
-  margin-top: var(--nav-visual-height, 72px);
-}
-/* Scale modal content to match site scale */
-.image-modal .modal-content,
-.image-modal .close-modal,
-.image-modal .prev-btn,
-.image-modal .next-btn,
-.image-modal .image-counter,
-.details-modal .details-modal-content {
-  transform: scale(var(--site-scale, 1));
-  transform-origin: center center;
+  min-height: 100vh;
 }

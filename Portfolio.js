@@ -1,24 +1,22 @@
 /* ── Viewport scaling ── */
-function applyScale() {
+(function () {
+  function applyScale() {
     const scale = window.innerWidth / 1920;
     document.documentElement.style.setProperty('--site-scale', scale);
-    const nav = document.querySelector('.nav');
-    if (nav) {
-      // Natural nav height × scale = its true visual height on screen
-      const navVisualHeight = nav.offsetHeight * scale;
-      document.documentElement.style.setProperty('--nav-visual-height', navVisualHeight + 'px');
-    }
-    // Let #site-wrapper grow to its natural content height.
-    // Only compensate body so the scaled wrapper's visual height fills the viewport.
+
     const wrapper = document.getElementById('site-wrapper');
-    if (wrapper) {
-      wrapper.style.height = '';  // clear any previously set height
-      // After layout, sync body height to the wrapper's scaled visual height
-      requestAnimationFrame(function () {
-        const naturalHeight = wrapper.scrollHeight;
-        document.body.style.height = (naturalHeight * scale) + 'px';
-      });
-    }
+    if (!wrapper) return;
+
+    // Clear any forced height so the wrapper sizes to its content
+    wrapper.style.height = 'auto';
+    document.body.style.height = 'auto';
+
+    // Force a reflow so scrollHeight reflects true content height
+    void wrapper.offsetHeight;
+
+    // Now set body height to the wrapper's visual scaled height
+    // so the browser scrollbar matches actual on-screen content length
+    document.body.style.height = (wrapper.scrollHeight * scale) + 'px';
   }
   applyScale();
   window.addEventListener('resize', applyScale);
@@ -206,8 +204,8 @@ items.forEach(item => {
   // ==================== PROJECTS DATA (FIXED SYNTAX) ====================
   const projectsData = [
     { id: 1, title: "Portfolio", description: "Complete Portfolio site which you are on now.", fullDescription: "This project involved a complete overhaul of an existing e-commerce platform. I conducted user research, created wireframes, designed high-fidelity mockups, and built a responsive frontend using React. The result was a 40% increase in conversion rate and a 25% decrease in bounce rate.", category: "Development", client: "Fashion Boutique", year: "2026", imageUrl:"https://digifloat.io/wp-content/uploads/2024/12/Royalty-Free-Illustrations-Twitter.jpg", link: "https://lynn-matthew.github.io/", galleryImages: ["Resources/Development/Portfolio/Portfolio.png"] },
-    { id: 2, title: "Cheat Sheet - Adobe Illustrator", description: "Custom cheat sheet designed specifically for Adobe Illustrator.", category: "Print Design", client: "Poster", year: "2026", technologies: ["Adobe Illustrator"], imageUrl: "https://img.freepik.com/free-vector/tiny-graphic-designer-drawing-with-big-pen-computer-screen-creators-work-creative-woman-working-laptop-flat-vector-illustration-digital-design-concept-banner-landing-web-page_74855-25342.jpg?semt=ais_hybrid&w=740&q=80", link:"", galleryImages: ["Resources/Print-Design/Cheat-Sheet/Cheat-Sheet.jpg"] },
-    { id: 3, title: "Queue Management System", description: "Responsive web design and development for an AI-powered productivity platform with dynamic interactions.", category: "Development", client: "FlowAI", year: "2026", imageUrl: "https://img.freepik.com/premium-vector/illustration-showing-hospital-building-with-several-ambulances-parked-front-it_697880-24512.jpg?semt=ais_incoming&w=740&q=80", link: "#", galleryImages: ["hosp/Screenshot (1).png", "hosp/Screenshot (2).png", "hosp/Screenshot (3).png","hosp/Screenshot (4).png","hosp/Screenshot (5).png","hosp/Screenshot (6).png","hosp/Screenshot (7).png","hosp/Screenshot (8).png","hosp/Screenshot (9).png","hosp/Screenshot (10).png","hosp/Screenshot (11).png","hosp/Screenshot (12).png","hosp/Screenshot (13).png","hosp/Screenshot (14).png","hosp/Screenshot (15).png"] },
+    { id: 2, title: "Cheat Sheet - Adobe Illustrator", description: "Custom cheat sheet designed specifically for Adobe Illustrator.", category: "Print Design", client: "Poster", year: "2026", technologies: ["Adobe Illustrator"], imageUrl: "https://img.freepik.com/free-vector/tiny-graphic-designer-drawing-with-big-pen-computer-screen-creators-work-creative-woman-working-laptop-flat-vector-illustration-digital-design-concept-banner-landing-web-page_74855-25342.jpg?semt=ais_hybrid&w=740&q=80", link:"", galleryImages: ["Resources/Print-Design/Cheat-sheet/Cheat-sheet.jpg"] },
+    { id: 3, title: "Queue Management System", description: "Responsive web design and development for an AI-powered productivity platform with dynamic interactions.", category: "Development", client: "FlowAI", year: "2026", imageUrl: "https://img.freepik.com/premium-vector/illustration-showing-hospital-building-with-several-ambulances-parked-front-it_697880-24512.jpg?semt=ais_incoming&w=740&q=80", link: "#", galleryImages: ["Resources/Development/QMS/Screenshot (1).png", "Resources/Development/QMS/Screenshot (2).png", "Resources/Development/QMS/Screenshot (3).png","Resources/Development/QMS/Screenshot (4).png","Resources/Development/QMS/Screenshot (5).png","Resources/Development/QMS/Screenshot (6).png","Resources/Development/QMS/Screenshot (7).png","Resources/Development/QMS/Screenshot (8).png","Resources/Development/QMS/Screenshot (9).png","Resources/Development/QMS/Screenshot (10).png","Resources/Development/QMS/Screenshot (11).png","Resources/Development/QMS/Screenshot (12).png","Resources/Development/QMS/Screenshot (13).png","Resources/Development/QMS/Screenshot (14).png","Resources/Development/QMS/Screenshot (15).png"] },
   ];
 
   let currentCategory = "Top";
