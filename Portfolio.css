@@ -3096,7 +3096,7 @@ html {
   width: 1920px;
   transform-origin: top left;
   transform: scale(var(--site-scale, 1));
-  min-height: 100vh;
+  height: auto;
 }
 /* Scale modal content to match site scale */
 .image-modal .modal-content,
