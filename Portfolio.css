@@ -3097,6 +3097,12 @@ html {
   transform: scale(var(--site-scale, 1));
   height: auto;
 }
+#nav-wrapper {
+  width: 1920px;
+  transform-origin: top left;
+  transform: scale(var(--site-scale, 1));
+  height: auto;
+}
 /* Scale modal content to match site scale */
 .image-modal .modal-content,
 .image-modal .close-modal,
