@@ -424,7 +424,7 @@ body {
 }
 
 .about-svg {
-  width: 100%;
+  width: 2020px;
   height: auto;
   object-fit: contain;
 }
@@ -2723,9 +2723,8 @@ body {
 /* The SVG itself - fluid scaling */
 .services-svg {
   display: block;
-  width: 100%;
+  width: 1800px;
   height: auto;
-  max-width: 100%;
   shape-rendering: geometricPrecision;
 }
 
