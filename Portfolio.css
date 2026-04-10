@@ -216,6 +216,14 @@ body {
   -webkit-backdrop-filter: blur(6px);
 
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+
+  /* Scale the nav to match the site scale so it never
+     grows larger than its designed proportion at any viewport */
+  transform: scaleY(var(--site-scale, 1));
+  transform-origin: top center;
+  /* Collapse the space the scaled-down nav physically occupies */
+  height: calc(52px * var(--site-scale, 1));
+  overflow: visible;
 }
 
 .nav-container {
@@ -225,7 +233,7 @@ body {
 }
 
 .nav-content {
-  height: auto;
+  height: 52px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -241,11 +249,11 @@ body {
 ════════════════════════════════════════ */
 .hero-section {
   width: 100%;
-  padding-top: 2rem;
-  /* push below fixed nav */
+  /* Push below the fixed nav. The nav is 52px tall at full scale,
+     scaled by --site-scale, so we need exactly that many px of padding. */
+  padding-top: calc(52px * var(--site-scale, 1));
   background: #fff7d9;
   line-height: 0;
-  /* kill inline-block gap */
 }
 
 /* Default margin (non‑fullscreen) */
