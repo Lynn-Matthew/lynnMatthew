@@ -241,15 +241,18 @@ body {
 ════════════════════════════════════════ */
 .hero-section {
   width: 100%;
-  padding-top: calc(72px / var(--site-scale, 1));
-  background: #fff7d9;
+  padding-top: calc(2rem * var(--site-scale, 1));
+  /* push below fixed nav — scales proportionally with viewport */
+  background: 
+#fff7d9;
   line-height: 0;
+  /* kill inline-block gap */
 }
-
 /* Default margin (non‑fullscreen) */
 .hero-section .hero-svg-full {
-  margin-top: 0;
+  margin-top: calc(-180px * var(--site-scale, 1));
   transition: margin-top 0.8s ease;
+  /* optional smooth change */
 }
 /* For screens larger than a certain width (e.g., 1400px) */
 @media (min-height: 1080px) {
