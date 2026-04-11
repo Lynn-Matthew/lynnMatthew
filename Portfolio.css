@@ -241,7 +241,7 @@ body {
 ════════════════════════════════════════ */
 .hero-section {
   width: 100%;
-  padding-top: calc(2rem * var(--site-scale, 1));
+  padding-top: calc(4rem * var(--site-scale, 1));
   /* push below fixed nav — scales proportionally with viewport */
   background: #fff7d9;
   line-height: 0;
