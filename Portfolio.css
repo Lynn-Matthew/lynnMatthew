@@ -241,20 +241,16 @@ body {
 ════════════════════════════════════════ */
 .hero-section {
   width: 100%;
-  /* Nav is fixed so its physical pixel height stays constant.
-     site-wrapper is scaled, so we divide by scale to convert
-     nav's real px height into the logical px space of the wrapper. */
-  padding-top: calc(80px / var(--site-scale, 1));
+  padding-top: calc(72px / var(--site-scale, 1));
   background: #fff7d9;
   line-height: 0;
 }
 
 /* Default margin (non‑fullscreen) */
 .hero-section .hero-svg-full {
-  margin-top: calc(-180px / var(--site-scale, 1));
+  margin-top: 0;
   transition: margin-top 0.8s ease;
 }
-
 /* For screens larger than a certain width (e.g., 1400px) */
 @media (min-height: 1080px) {
   .hero-section .hero-svg-full {
