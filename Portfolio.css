@@ -250,7 +250,7 @@ body {
 
 /* Default margin (non‑fullscreen) */
 .hero-section .hero-svg-full {
-  margin-top: calc(-180px * 2(var(--site-scale, 1)));
+  margin-top: calc(-180px * var(--site-scale, 1));
   transition: margin-top 0.8s ease;
   /* optional smooth change */
 }
