@@ -607,13 +607,21 @@ items.forEach(item => {
     });
     currentLeverFrame = index;
   }
+function getClientCoords(event) {
+    // Works for both mouse and touch events
+    if (event.touches && event.touches.length > 0) {
+      return { x: event.touches[0].clientX, y: event.touches[0].clientY };
+    }
+    return { x: event.clientX, y: event.clientY };
+  }
 
   function getMouseY(event) {
     const svgElem = document.querySelector('.projects-svg');
     if (!svgElem) return 0;
+    const coords = getClientCoords(event);
     const pt = svgElem.createSVGPoint();
-    pt.x = event.clientX;
-    pt.y = event.clientY;
+    pt.x = coords.x;
+    pt.y = coords.y;
     const svgP = pt.matrixTransform(svgElem.getScreenCTM().inverse());
     return svgP.y;
   }
@@ -627,6 +635,7 @@ items.forEach(item => {
 
   function onLeverMouseMove(e) {
     if (!isDraggingLever) return;
+    e.preventDefault();
     const mouseY = getMouseY(e);
     let dragDist = mouseY - pivotY;
     dragDist = Math.min(Math.max(dragDist, 0), maxPullDist);
@@ -658,9 +667,14 @@ items.forEach(item => {
 
   const leverGroup = document.getElementById('new-lever');
   if (leverGroup) {
+    // Mouse events
     leverGroup.addEventListener('mousedown', onLeverMouseDown);
     window.addEventListener('mousemove', onLeverMouseMove);
     window.addEventListener('mouseup', onLeverMouseUp);
+    // Touch events — same handlers, coords extracted inside
+    leverGroup.addEventListener('touchstart', onLeverMouseDown, { passive: false });
+    window.addEventListener('touchmove', onLeverMouseMove, { passive: false });
+    window.addEventListener('touchend', onLeverMouseUp);
     showLeverFrame(0);
   }
 
