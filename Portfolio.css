@@ -467,9 +467,9 @@ body {
 }
 
 .about-svg {
-  width: 100%;
+  width: 2000px;
   height: auto;
-  object-fit: contain;
+  display: block;
 }
 
 /* ── RIGHT BIG PANEL ─────────────────────────────
@@ -2766,9 +2766,8 @@ body {
 /* The SVG itself - fluid scaling */
 .services-svg {
   display: block;
-  width: 100%;
+  width: 1800px;
   height: auto;
-  max-width: 100%;
   shape-rendering: geometricPrecision;
 }
 
