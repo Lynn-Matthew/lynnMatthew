@@ -712,11 +712,4 @@ if (contactGear) {
 }
 
 });
-// Mobile prompt dismiss
-const mobilePrompt = document.getElementById('mobile-prompt');
-const mobilePromptClose = document.getElementById('mobile-prompt-close');
-if (mobilePrompt && mobilePromptClose) {
-  mobilePromptClose.addEventListener('click', () => {
-    mobilePrompt.style.display = 'none';
-  });
-}
+
