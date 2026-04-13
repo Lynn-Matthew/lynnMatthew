@@ -298,6 +298,15 @@ body {
   transition: margin-top 0.8s ease;
   /* optional smooth change */
 }
+
+@media (max-width: 768px) {
+  .hero-section .hero-svg-full {
+    margin-top: calc(-50px * var(--site-scale, 1));
+  }
+  .hero-section {
+    padding-top: calc(3rem * var(--site-scale, 1));
+  }
+}
 /* For screens larger than a certain width (e.g., 1400px) */
 @media (min-height: 1080px) {
   .hero-section .hero-svg-full {
