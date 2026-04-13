@@ -91,7 +91,7 @@ let isFullscreenMode = false;
 // Per-section scroll stop offsets — normal view
 const sectionScrollOffsets = {
   'hero': 0,                 // Hero section (top of page)
-  'about': 60,             // Adjust offset for About section
+  'about': 90,             // Adjust offset for About section
   'portfolio': 140,          // Adjust offset for Portfolio section
   'services': 150,           // Adjust offset for Services section
   'contact': 60             // Adjust offset for Contact section
